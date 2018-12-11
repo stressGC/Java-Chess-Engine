@@ -10,19 +10,18 @@ public class Rating {
 	static Random rand = new Random(); 
 	
 	static int PAWN_VALUE = 100;
-	static int KNIGHT = 325;
-	static int BISHOP = 330;
-	static int ROOK = 500;
-	static int QUEEN = 900;
-	static int KING = 20000;
+	static int KNIGHT_VALUE = 325;
+	static int BISHOP_VALUE = 330;
+	static int ROOK_VALUE = 500;
+	static int QUEEN_VALUE = 900;
+	static int KING_VALUE = 20000;
 	
     public static int evaluate(boolean whiteTurn, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK,long EP,boolean CWK,boolean CWQ,boolean CBK,boolean CBQ) {
     	//int score = rand.nextInt(max - min + 1) + min;
     	//score++;
-    	//System.out.println("====================");
     	int score = 0;
     	score += whiteTurn ? getEvaluation(WP, BP, PAWN_VALUE) : -getEvaluation(WP, BP, PAWN_VALUE);
-    	
+    	score += whiteTurn ? getEvaluation(WN, BN, KNIGHT_VALUE) : -getEvaluation(WN, BN, KNIGHT_VALUE);
     	//System.out.println("whiteTurn={"+whiteTurn+"}" + " score = " + score + ", whiteP={" + numberOfOnes(WP) + "} " + ", blackP={" + numberOfOnes(BP) + "} ");
     	//if (((WKt&Moves.unsafeForWhite(WPt,WNt,WBt,WRt,WQt,WKt,BPt,BNt,BBt,BRt,BQt,BKt))==0 && WhiteToMove) ||
         //((BKt&Moves.unsafeForBlack(WPt,WNt,WBt,WRt,WQt,WKt,BPt,BNt,BBt,BRt,BQt,BKt))==0 && !WhiteToMove)) {

@@ -101,7 +101,8 @@ public class UCI {
 	    }
 	    
 	    for (int i = 0; i < moves.length(); i+=4) {
-	    	
+
+	    	System.out.println("====================");
 	        // make the move
 	    	String move = moves.substring(i,i+4);
 	        long WPt=Moves.makeMove(Engine.WP, move, 'P');

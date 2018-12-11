@@ -8,7 +8,7 @@ public class Engine {
             UniversalWQ=0L,UniversalWK=0L,UniversalBP=0L,UniversalBN=0L,
             UniversalBB=0L,UniversalBR=0L,UniversalBQ=0L,UniversalBK=0L,
             UniversalEP=0L;
-    static int searchDepth=1,moveCounter;
+    static int searchDepth=3,moveCounter;
     static int MATE_SCORE=Integer.MAX_VALUE - 1,NULL_INT=Integer.MIN_VALUE;
     
     public static void main(String[] args) {
