@@ -1,6 +1,10 @@
 package georges.cosson;
 
 import java.util.Arrays;
+
+/*
+ * this class is reponsible for the move generation and legality
+ */
 public class Moves {
     static long FILE_A=72340172838076673L;
     static long FILE_H=-9187201950435737472L;
@@ -21,6 +25,7 @@ public class Moves {
     static long OCCUPIED;
     static long EMPTY;
     static long CASTLE_ROOKS[]={63,56,7,0};
+    
     static long RankMasks8[] =/*from rank1 to rank8*/
     {
         0xFFL, 0xFF00L, 0xFF0000L, 0xFF000000L, 0xFF00000000L, 0xFF0000000000L, 0xFF000000000000L, 0xFF00000000000000L
@@ -42,6 +47,7 @@ public class Moves {
 	0x8040201008040201L, 0x4020100804020100L, 0x2010080402010000L, 0x1008040201000000L,
 	0x804020100000000L, 0x402010000000000L, 0x201000000000000L, 0x100000000000000L
     };
+    
     static long HAndVMoves(int s) {
         //REMINDER: requires OCCUPIED to be up to date
         long binaryS=1L<<s;
@@ -49,6 +55,7 @@ public class Moves {
         long possibilitiesVertical = ((OCCUPIED&FileMasks8[s % 8]) - (2 * binaryS)) ^ Long.reverse(Long.reverse(OCCUPIED&FileMasks8[s % 8]) - (2 * Long.reverse(binaryS)));
         return (possibilitiesHorizontal&RankMasks8[s / 8]) | (possibilitiesVertical&FileMasks8[s % 8]);
     }
+    
     static long DAndAntiDMoves(int s) {
         //REMINDER: requires OCCUPIED to be up to date
         long binaryS=1L<<s;
@@ -56,6 +63,8 @@ public class Moves {
         long possibilitiesAntiDiagonal = ((OCCUPIED&AntiDiagonalMasks8[(s / 8) + 7 - (s % 8)]) - (2 * binaryS)) ^ Long.reverse(Long.reverse(OCCUPIED&AntiDiagonalMasks8[(s / 8) + 7 - (s % 8)]) - (2 * Long.reverse(binaryS)));
         return (possibilitiesDiagonal&DiagonalMasks8[(s / 8) + (s % 8)]) | (possibilitiesAntiDiagonal&AntiDiagonalMasks8[(s / 8) + 7 - (s % 8)]);
     }
+    
+    // returns the bitboard generated after the move has been done
     public static long makeMove(long board, String move, char type) {
         if (Character.isDigit(move.charAt(3))) {//'regular' move
             int start=(Character.getNumericValue(move.charAt(0))*8)+(Character.getNumericValue(move.charAt(1)));
@@ -118,6 +127,8 @@ public class Moves {
         }
         return 0;
     }
+    
+    // computes all possible moves for the white player
     public static String possibleMovesW(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK,long EP,boolean CWK,boolean CWQ,boolean CBK,boolean CBQ) {
         NOT_MY_PIECES=~(WP|WN|WB|WR|WQ|WK|BK);//added BK to avoid illegal capture
         MY_PIECES=WP|WN|WB|WR|WQ;//omitted WK to avoid illegal capture
@@ -132,6 +143,8 @@ public class Moves {
                 possibleCW(WP,WN,WB,WR,WQ,WK,BP,BN,BB,BR,BQ,BK,CWK,CWQ);
         return list;
     }
+    
+    // computes all possible moves for the black player
     public static String possibleMovesB(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK,long EP,boolean CWK,boolean CWQ,boolean CBK,boolean CBQ) {
         NOT_MY_PIECES=~(BP|BN|BB|BR|BQ|BK|WK);//added WK to avoid illegal capture
         MY_PIECES=BP|BN|BB|BR|BQ;//omitted BK to avoid illegal capture
@@ -146,6 +159,8 @@ public class Moves {
                 possibleCB(WP,WN,WB,WR,WQ,WK,BP,BN,BB,BR,BQ,BK,CBK,CBQ);
         return list;
     }
+    
+    /* all functions to generate different possible moves */
     public static String possibleWP(long WP,long BP,long EP) {
         String list="";
         //x1,y1,x2,y2
@@ -477,6 +492,8 @@ public class Moves {
         }
         return list;
     }
+    
+    // function checking legality of a move (does it put own king in check ?)
     public static long unsafeForBlack(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK) {
         long unsafe;
         OCCUPIED=WP|WN|WB|WR|WQ|WK|BP|BN|BB|BR|BQ|BK;
@@ -619,6 +636,8 @@ public class Moves {
         unsafe |= possibility;
         return unsafe;
     }
+    
+    // draws a bitboard (debug purpose)
     public static void drawBitboard(long bitBoard) {
         String chessBoard[][]=new String[8][8];
         for (int i=0;i<64;i++) {

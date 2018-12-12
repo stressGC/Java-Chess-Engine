@@ -1,5 +1,8 @@
 package georges.cosson;
 
+/*
+ *  this class is responsible for the heuristic
+ */
 public class Rating {
 	
 	// pieces values
