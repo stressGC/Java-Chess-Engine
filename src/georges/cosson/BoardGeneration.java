@@ -17,6 +17,9 @@ public class BoardGeneration {
 	* King=K/k
 	*/
 	
+	// default FEN chessboard representation
+	static String DEFAULT_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+	
 	// default chessboard representation
     static String chessBoard[][]={
             {"r","n","b","q","k","b","n","r"},
