@@ -3,8 +3,6 @@ package georges.cosson;
 import java.util.*;
 
 public class UCI {
-    static String ENGINE_NAME="LE DJO";
-    static String ENGINE_AUTHOR = "Georges";
     
     public static void uciCommunication() {
         @SuppressWarnings("resource")
@@ -48,8 +46,8 @@ public class UCI {
         }
     }
     public static void inputUCI() {
-        System.out.println("id name "+ ENGINE_NAME);
-        System.out.println("id author " + ENGINE_AUTHOR);
+        System.out.println("id name "+ Engine.ENGINE_NAME);
+        System.out.println("id author " + Engine.ENGINE_AUTHOR);
         //options go here
         System.out.println("uciok");
     }
@@ -91,6 +89,8 @@ public class UCI {
     	// principe ligne 45 : https://github.com/Garee/jchess/blob/master/src/model/AI.java
     	String moves;
     	String bestMove = "";
+    	
+    	long start = System.currentTimeMillis();
     	
     	int bestScore = Integer.MIN_VALUE + 1;
     	
@@ -143,13 +143,13 @@ public class UCI {
 		        }
             }
 	    }
-	    
+	    long end = System.currentTimeMillis();
 	    //System.out.println(move);
 	    //Perft.perftRoot(Engine.WP,Engine.WN,Engine.WB,Engine.WR,Engine.WQ,Engine.WK,Engine.BP,Engine.BN,Engine.BB,Engine.BR,Engine.BQ,Engine.BK,Engine.EP,Engine.CWK,Engine.CWQ,Engine.CBK,Engine.CBQ,!Engine.WhiteToMove, 0);
         //int score = PrincipalVariation.pvSearch(-1000,1000, Engine.WP,Engine.WN,Engine.WB,Engine.WR,Engine.WQ,Engine.WK,Engine.BP,Engine.BN,Engine.BB,Engine.BR,Engine.BQ,Engine.BK,Engine.EP,Engine.CWK,Engine.CWQ,Engine.CBK,Engine.CBQ, Engine.WhiteToMove, 0);//Minimax.computeBestMove(move);
         //System.out.println("bmove raw : " + bestMove);
         System.out.println("bestmove " +  moveToAlgebra(bestMove));
-        System.out.println(Engine.moveCounter);
+        System.out.println("found in " + (end - start) + " ms");
     }
     
     public static String moveToAlgebra(String move) {

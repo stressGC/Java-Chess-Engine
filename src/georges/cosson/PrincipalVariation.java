@@ -55,6 +55,7 @@ public class PrincipalVariation {
             	
                 score = -zWSearch(1 - beta,WPt,WNt,WBt,WRt,WQt,WKt,BPt,BNt,BBt,BRt,BQt,BKt,EPt,CWKt,CWQt,CBKt,CBQt,!WhiteToMove,depth+1);
             }
+            
             if (score >= beta)
             {	
             	//System.out.println("zWSearch => fail-hard : beta cutoff (too good to be true) "+ score + "beta={" + beta + "}");
