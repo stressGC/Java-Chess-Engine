@@ -87,7 +87,7 @@ public class UCI {
         if (input.contains("startpos ")) {
         	
             input=input.substring(9);
-            BoardGeneration.importFEN(BoardGeneration.DEFAULT_FEN);
+            BoardGeneration.importFEN(BoardGeneration.DEFAULT_BOARD_FEN);
             
         }
         else if (input.contains("fen")) {

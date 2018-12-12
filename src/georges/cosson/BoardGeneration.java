@@ -18,10 +18,10 @@ public class BoardGeneration {
 	*/
 	
 	// default FEN chessboard representation
-	static String DEFAULT_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+	static String DEFAULT_BOARD_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 	
 	// default chessboard representation
-    static String chessBoard[][]={
+    static String DEFAULT_BOARD_STRING[][]={
             {"r","n","b","q","k","b","n","r"},
             {"p","p","p","p","p","p","p","p"},
             {" "," "," "," "," "," "," "," "},
@@ -34,7 +34,7 @@ public class BoardGeneration {
 	// initialize a standard chess board from String array to bitboard
     public static void initiateStandardChess() {
         long WP = 0L, WN = 0L, WB = 0L, WR = 0L, WQ = 0L, WK = 0L, BP = 0L, BN = 0L, BB = 0L, BR = 0L, BQ = 0L, BK = 0L;
-        arrayToBitboards(chessBoard, WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
+        arrayToBitboards(DEFAULT_BOARD_STRING, WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
     }
     
     // takes input as FEN String, and parses it
