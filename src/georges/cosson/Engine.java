@@ -18,7 +18,7 @@ public class Engine {
             UniversalEP = 0L;
     
     // searching depth 4 = 1500 ms on my computer
-    static int searchDepth = 4;
+    static int searchDepth = 3;
     
     // to keep track of how much moves we compute (debug purpose)
     static int moveCounter;
@@ -34,7 +34,7 @@ public class Engine {
         BoardGeneration.importFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         
         // test purpose
-        //UCI.inputPosition("position startpos moves e2e4 e7e5 c2c3");
+        UCI.inputPosition("position startpos moves e2e4 e7e5 c2c3");
         UCI.inputPrint();
         
         // launching the UCI listener

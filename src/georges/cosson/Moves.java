@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 /*
  * this class is reponsible for the move generation and legality
+ * taken from Youtube channel Logic Crazy Chess
  */
+
 public class Moves {
     static long FILE_A=72340172838076673L;
     static long FILE_H=-9187201950435737472L;
