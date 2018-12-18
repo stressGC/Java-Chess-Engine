@@ -1,9 +1,18 @@
 # Java Chess Engine
 
-# Principal Variation Search
+## Principal Variation Search
 
-# Bitboards
+## Bitboards
 
-# Zero Window Search
+## Zero Window Search
 
-# Iterative Deepening
+## Heuristic
+
+## Future Improvement 
+
+### Iterative Deepening
+
+### Better Heuristic
+
+
+

@@ -59,7 +59,7 @@ public class UCI {
     
     // function called the make sure the UCI protocol is supproted
     public static void inputUCI() {
-        System.out.println("id name "+ Engine.ENGINE_NAME);
+        System.out.println("id name " + Engine.ENGINE_NAME);
         System.out.println("id author " + Engine.ENGINE_AUTHOR);
         System.out.println("uciok");
     }
