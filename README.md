@@ -102,6 +102,7 @@ l'algorithme Minimax. Son avantages est de trier les noeuds et de partir du prin
 que le premier noeud est le meilleur (donc dans la variation principale). Nous avons
 trié les noeuds en fonction de leur heuristique, dans l'ordre croissant si c'est un
 noeud minimum et dans l'ordre décroissant si c'est un noeud maximum.
+
 PVS recherche ensuite le score estimé des noeuds restants grâce à l'algorithme
 **Zero Window Search** , qui est une version plus rapide de l'élagage alpha-beta car
 alpha et beta y sont égaux. Si la recherche échoue, alors le premier noeud n'était
@@ -110,7 +111,7 @@ alpha-beta classique.
 
 ---
 
-## III. Heuristique
+## III. HEURISTIQUE
 
 Nous avons pour l'instant implémenté une heuristique simple. Elle consiste à
 compter le nombre de pièces présentes sur le plateau pour chaque joueur,
