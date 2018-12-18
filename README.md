@@ -8,6 +8,8 @@ git clone https://github.com/stressGC/Java-Chess-Engine "my/directory"
 # build avec Eclipse ou une ligne de commande
 # charger dans ArenaChess ou n'importe quel autre GUI d'échecs
 ```
+Une version pré-construite du projet est disponible [ici](https://github.com/stressGC/Java-Chess-Engine/blob/master/build/gcosson%20v1.0.jar).
+
 ---
 
 ## TABLE DES MATIÈRES
